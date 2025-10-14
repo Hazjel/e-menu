@@ -50,6 +50,15 @@ class User extends Authenticatable
         ];
     }
 
+    public function getLogoUrlAttribute()
+    {
+        if ($this->logo) {
+            return asset('storage/' . $this->logo);
+        } else {
+            return null;
+        }
+    }
+
     public function productCategories() {
         return $this->hasMany(ProductCategory::class);
     }
