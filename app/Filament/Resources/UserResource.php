@@ -18,11 +18,8 @@ use Illuminate\Support\Facades\Auth;
 class UserResource extends Resource
 {
     protected static ?string $model = User::class;
-
     protected static ?string $navigationIcon = 'heroicon-o-user';
-
     protected static ?string $navigationLabel = 'Manajemen User';
-
     public static function canViewAny(): bool
     {
         return Auth::user()->role === 'admin';
@@ -35,6 +32,7 @@ class UserResource extends Resource
                 Forms\Components\FileUpload::make('logo')
                     ->label('Logo Toko')
                     ->image()
+					->directory('user-logos')
                     ->required(),
                 Forms\Components\TextInput::make('name')
                     ->label('Nama Toko')
