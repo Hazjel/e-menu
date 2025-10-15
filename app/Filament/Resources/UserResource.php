@@ -72,8 +72,7 @@ class UserResource extends Resource
             ->columns([
                 Tables\Columns\ImageColumn::make('logo')
                     ->label('Logo Toko')
-                    ->size(50)
-                    ->getStateUsing(fn ($record) => $record->logo ? asset('storage/' . $record->logo) : null),
+                    ->size(50),
                 Tables\Columns\TextColumn::make('name')
                     ->label('Nama Toko'),
                 Tables\Columns\TextColumn::make('username')

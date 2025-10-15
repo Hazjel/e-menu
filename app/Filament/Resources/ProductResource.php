@@ -112,8 +112,7 @@ class ProductResource extends Resource
                     ->label('Kategori'),
                 Tables\Columns\ImageColumn::make('image')
                     ->label('Foto Menu')
-                    ->circular()
-                    ->getStateUsing(fn ($record) => $record->image ? asset('storage/' . $record->image) : null),
+                    ->circular(),
                 Tables\Columns\TextColumn::make('price')
                     ->label('Harga')
                     ->formatStateUsing(function (string $state) {

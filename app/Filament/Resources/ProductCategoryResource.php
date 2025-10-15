@@ -65,8 +65,7 @@ class ProductCategoryResource extends Resource
                     ->label('Nama Kategori'),
                 Tables\Columns\ImageColumn::make('icon')
                     ->label('Ikon Kategori')
-                    ->circular()
-                    ->getStateUsing(fn ($record) => $record->icon ? asset('storage/' . $record->icon) : null),
+                    ->circular(),
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('user_id')
