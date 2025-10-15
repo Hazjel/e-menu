@@ -13,6 +13,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ProductCategoryResource extends Resource
 {
@@ -47,6 +48,7 @@ class ProductCategoryResource extends Resource
                     ->required(),
                 Forms\Components\FileUpload::make('icon')
                     ->label('Ikon Kategori')
+                    ->image()
                     ->required(),
             ]);
     }
@@ -62,7 +64,8 @@ class ProductCategoryResource extends Resource
                     ->label('Nama Kategori'),
                 Tables\Columns\ImageColumn::make('icon')
                     ->label('Ikon Kategori')
-                    ->circular(),
+                    ->circular()
+                    ->getStateUsing(fn ($record) => $record->icon ? asset('storage/' . $record->icon) : null),
             ])
             ->filters([
                 Tables\Filters\SelectFilter::make('user_id')
