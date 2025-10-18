@@ -6,6 +6,7 @@ use App\Filament\Resources\ProductResource\Pages;
 use App\Filament\Resources\ProductResource\RelationManagers;
 use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Models\Subscription;
 use Filament\Forms;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Form;
@@ -32,6 +33,22 @@ class ProductResource extends Resource
         }
 
         return parent::getEloquentQuery()->where('user_id', $user->id);
+    }
+
+    public static function canCreate(): bool {
+        if (Auth::user()->role === 'admin') {
+            return true;
+        }
+
+        $subscription = Subscription::where('user_id', Auth::user()->id)
+            ->where('end_date', '>', now())
+            ->where('is_active', true)
+            ->latest()
+            ->first();
+
+        $countProducts = Product::where('user_id', Auth::user()->id)->count();
+
+        return !($countProducts >= 5 && !$subscription);
     }
 
     public static function form(Form $form): Form
