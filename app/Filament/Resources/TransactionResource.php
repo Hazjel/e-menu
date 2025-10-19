@@ -24,6 +24,17 @@ class TransactionResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-currency-dollar';
     protected static ?string $navigationLabel = 'Manajemen Transaksi';
 
+    public static function getEloquentQuery(): Builder
+    {
+        $user = Auth::user();
+
+        if ($user->role === 'admin') {
+            return parent::getEloquentQuery();
+        }
+
+        return parent::getEloquentQuery()->where('user_id', $user->id);
+    }
+
     public static function form(Form $form): Form
     {
         return $form
