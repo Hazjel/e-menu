@@ -21,7 +21,6 @@ class Register extends BaseRegister
                         $this->getEmailFormComponent(),
                         $this->getPasswordFormComponent(),
                         $this->getPasswordConfirmationFormComponent(),
-                        $this->getTermsOfServiceFormComponent(),
                     ])
                     ->statePath('data'),
             ),
