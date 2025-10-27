@@ -33,7 +33,6 @@ class Register extends BaseRegister
             ->label('Logo Toko')
             ->image()
             ->required()
-            ->maxSize(1024)
             ->directory('store-logos');
     }
 
