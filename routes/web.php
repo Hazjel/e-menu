@@ -13,3 +13,4 @@ Route::get('/{username}/find-product', [App\Http\Controllers\ProductController::
 Route::get('/{username}/find-product/result', [App\Http\Controllers\ProductController::class, 'findResults'])->name('product.find-result');
 Route::get('/{username}/product/{id}', [App\Http\Controllers\ProductController::class, 'show'])->name('product.show');
 Route::get('/{username}/cart', [App\Http\Controllers\TransactionController::class, 'cart'])->name('cart');
+Route::get('/{username}/customer-information', [App\Http\Controllers\TransactionController::class, 'customerInformation'])->name('customer-information');

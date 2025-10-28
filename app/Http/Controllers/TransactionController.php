@@ -17,4 +17,14 @@ class TransactionController extends Controller
 
         return view('page.cart', compact('store'));
     }
+
+    public function customerInformation(Request $request) {
+        $store = User::where('username', $request->username)->first();
+
+        if (!$store) {
+            abort(404);
+        }
+
+        return view('page.customer-information', compact('store'));
+    }
 }
