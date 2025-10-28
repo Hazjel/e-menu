@@ -39,7 +39,7 @@
             <div class="swiper w-full">
                 <div class="swiper-wrapper mt-[20px]">
                     @foreach ($store->productCategories as $category)
-                        <a href="#" class="swiper-slide !w-fit">
+                        <a href="{{ route('product.find-result', $store->username) . '?category=' . $category->slug }}" class="swiper-slide !w-fit">
                             <div class="flex flex-col items-center shrink-0 gap-2 text-center">
                                 <div
                                     class="w-[64px] h-[64px] rounded-full flex shrink-0 overflow-hidden p-4 bg-[#9393931A] bg-opacity-10">
@@ -119,7 +119,7 @@
             </div>
             <div class="flex flex-col gap-4 mt-[10px]">
                 @foreach ($products as $product)
-                    <a href="{{ route('product.show', ['username' => $store->username, 'id' => $popular->id ]) }}" class="card">
+                    <a href="{{ route('product.show', ['username' => $store->username, 'id' => $product->id ]) }}" class="card">
                         <div
                             class="flex rounded-[8px] border border-[#F1F2F6] p-[12px] gap-4 bg-white hover:bg-[#FFF7F0] hover:border-[1px] hover:border-[#F3AF00] transition-all duration-300">
                             <img src="{{ asset('storage/' . $product->image) }}" class="w-[128px] object-cover rounded-[8px]"
