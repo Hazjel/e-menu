@@ -12,7 +12,7 @@
         </a>
 
         <!-- Cart -->
-        <a href="#" class="flex flex-col items-center gap-2">
+        <a href="{{ route('cart', $store->username) }}" class="flex flex-col items-center gap-2">
             <div class="relative">
                 <img src="{{ asset('assets/images/icons/Buy.svg') }}" class="w-[24px] h-[24px]" alt="icon">
                 <div class="absolute top-[-4px] right-[-8px] flex items-center justify-center w-[16px] h-[16px] rounded-full bg-[#FF801A]">
