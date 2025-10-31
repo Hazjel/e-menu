@@ -30,7 +30,7 @@ class Register extends BaseRegister
     protected function getLogoFormComponent(): Component
     {
         return FileUpload::make('logo')
-            ->label('Logo Toko')
+            ->label('Store Logo')
             ->image()
             ->required()
             ->directory('store-logos');
@@ -40,7 +40,7 @@ class Register extends BaseRegister
     {
         return TextInput::make('username')
             ->label('Username')
-            ->hint('Minimal 5 karakter tanpa spasi.')
+            ->hint('At least 5 characters without spaces.')
             ->minLength(5)
             ->required()
             ->unique($this->getUserModel());
